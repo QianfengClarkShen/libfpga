@@ -1,2 +1,2 @@
-# libmpsoc
-Python library for MPSOC devices running Linux
+# libfpga
+Python3 library for operating DMA and register manipualtion on Xilinx FPGAs
