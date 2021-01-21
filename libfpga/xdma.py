@@ -147,7 +147,7 @@ class fpgamem:
     def file2mem(self,f,fpgaoffset=0,size=-1):
         if isinstance(f,io.BufferedIOBase):
             fd=f
-        elif (isinstance(f,str)):
+        elif isinstance(f,str):
             fd=open(f,'rb')
         else:
             print('ERROR: input file should be in binary format')
@@ -160,11 +160,12 @@ class fpgamem:
                 break
             self.put(raw_bytes,fpgaaddr)
             fpgaaddr+=size_to_read
-        fd.close()
+        if isinstance(f,str):
+            fd.close()
     def mem2file(self,f,fpgaoffset=0,size=4096):
         if isinstance(f,io.BufferedIOBase):
             fd=f
-        elif (isinstance(f,str)):
+        elif isinstance(f,str):
             fd=open(f,'wb')
         else:
             print('ERROR: output file should be in binary format')
@@ -179,7 +180,8 @@ class fpgamem:
             fpgaaddr+=bytes_to_read
             if len(raw_bytes) != bytes_to_read:
                 break
-        fd.close()
+        if isinstance(f,str):
+            fd.close()
     def clean(self):
         if self.h2c is not None:
             self.h2c.clean()
