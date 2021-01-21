@@ -370,7 +370,8 @@ class fpgamem:
             pl_addr+=bytes_to_read
             if len(raw_bytes) != bytes_to_read:
                 break
-        fd.close()
+        if isinstance(f,str):
+            fd.close()
     def mem2file(self,f,pl_offset=0,size=4096):
         if isinstance(f,io.BufferedIOBase):
             fd=f
@@ -390,7 +391,8 @@ class fpgamem:
             pl_addr+=bytes_to_read
             if len(raw_bytes) != bytes_to_read:
                 break
-        fd.close()
+        if isinstance(f,str):
+            fd.close()
     def clean(self):
         if self.cdma is not None:
             self.cdma.clean()
