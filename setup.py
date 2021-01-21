@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="libfpga",
-    version="0.0.1",
+    version="0.0.2",
     author="Qianfeng (Clark) Shen",
     author_email="qianfeng.shen@gmail.com",
-    description="Generic python library for Xilinx FPGAs on Linux",
+    description="Python3 library for operating DMA and register manipualtion on Xilinx FPGAs",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/QianfengClarkShen/libfpga",
