@@ -360,7 +360,7 @@ class fpgamem:
             remain_size = 0x7ffff000 #size limit
         else:
             remain_size = size
-        pl_addr=self.pl_base_addr+pl_offset
+        pl_addr=pl_offset
         while remain_size > 0:
             bytes_to_read = min(self.phy_buf.size,remain_size)
             remain_size -= bytes_to_read
@@ -381,7 +381,7 @@ class fpgamem:
             print('ERROR: output file should be in binary format')
             return 1
         remain_size = size
-        pl_addr=self.pl_base_addr+pl_offset
+        pl_addr=pl_offset
         while remain_size > 0:
             bytes_to_read = min(self.phy_buf.size,remain_size)
             remain_size -= bytes_to_read
