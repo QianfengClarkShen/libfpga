@@ -357,7 +357,7 @@ class fpgamem:
             print('ERROR: input file should be in binary format')
             return 1
         if size == -1:
-            remain_size = 1024**4 #1TB
+            remain_size = 0x7ffff000 #size limit
         else:
             remain_size = size
         pl_addr=self.pl_base_addr+pl_offset
@@ -365,11 +365,11 @@ class fpgamem:
             bytes_to_read = min(self.phy_buf.size,remain_size)
             remain_size -= bytes_to_read
             raw_bytes = fd.read(bytes_to_read)
+            if len(raw_bytes) == 0:
+                break
             self.buf_write(raw_bytes)
             self.put(pl_addr,len(raw_bytes),True)
             pl_addr+=bytes_to_read
-            if len(raw_bytes) != bytes_to_read:
-                break
         if isinstance(f,str):
             fd.close()
     def mem2file(self,f,pl_offset=0,size=4096):
